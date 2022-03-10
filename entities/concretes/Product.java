@@ -34,7 +34,7 @@ public class Product extends EntityBase {
 	}
 
 	public double getDiscountedPrice() {
-		return discountedPrice;
+		return unitPrice - (unitPrice * discountRate / 100);
 	}
 
 

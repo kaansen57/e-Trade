@@ -1,9 +1,6 @@
 package eTrade.business.concretes;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 import eTrade.dataAccess.concretes.ProductDao;
 import eTrade.entities.concretes.Product;
@@ -12,11 +9,11 @@ public class ProductManager {
 	ProductDao productDao  = new ProductDao();
 
 	public ProductManager() {
-		
+
 	}
 
 	public void add(Product product) {
-		if(duplicateControl(product) == false){
+		if(duplicateControl(product) == false) {
 			productDao.add(product);
 		}
 	}
@@ -31,7 +28,7 @@ public class ProductManager {
 
 	public boolean duplicateControl(Product product){
 		for(Product item : productDao.getAll()) {
-			if(product.getName() == item.getName()) {
+			if(product.getName().toLowerCase().equals(item.getName().toLowerCase())) {
 				return true;
 			}
 		}
